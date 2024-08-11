@@ -1,7 +1,9 @@
 <template>
   <div class="bg-[rgb(0,9,34)] w-full min-h-screen text-white font-prompt text-xl px-8 sm:px-12 sm:py-6 md:px-20 md:py-8 lg:px-32 lg:py-12 py-4 xl:px-52 xl:py-10 overflow-x-hidden">
-    <div v-if="error" class="text-red-500 xl:text-xl mb-2 flex justify-center items-center h-full">
-      {{ error }}
+    <div v-if="error" class="xl:text-xl mb-2 flex flex-col justify-center items-center h-[85vh] tracking-widest">
+      <h1 class="text-sm sm:text-md md:text-lg my-1 lg:text-xl xl:text-2xl md:my-2">{{ error }}</h1>
+      <h2 class="text-6xl md:text-7xl xl:text-8xl my-1">OOPS...</h2>
+      <button @click="navigateToHome()" class="rounded-xl  border p-2 sm:p-3 text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl lg:px-4 xl:px-5 my-2 md:my-3">Back Home</button>
     </div>
 
     <header v-if="movie" class="xl:mb-8 mb-2 md:mb-5">
@@ -126,13 +128,13 @@ export default {
             const credits = await responseCredits.json();
             this.movieCredits = credits;
           } else {
-            this.error = 'Oops, movie is not found. Try again.';
+            this.error = 'There is nothing here.';
           }
         } catch (error) {
-          this.error = 'Oops, movie is not found. Try again.';
+          this.error = 'There is nothing here.';
         }
       } else {
-        this.error = 'Oops, movie is not found. Try again.';
+        this.error = 'There is nothing here.';
       }
     },
     checkIfAdded(movie) {
